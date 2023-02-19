@@ -16,5 +16,18 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-toastify": "^9.1.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratap562/book-my-counsel-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratap562/book-my-counsel-frontend/issues"
+  },
+  "homepage": "https://github.com/pratap562/book-my-counsel-frontend#readme"
 }
