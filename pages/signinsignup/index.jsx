@@ -11,21 +11,24 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const googleSignup = () => {
     console.log('google signup');
-    Router.push(process.env.GOOGLE_AUTH_SIGNUP);
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_AUTH_SIGNUP, 'kll');
+    Router.push(process.env.NEXT_PUBLIC_GOOGLE_AUTH_SIGNUP);
 }
 
 const googleSignin = () => {
     console.log('google login');
-    Router.push(process.env.GOOGLE_AUTH_LOGIN);
+    Router.push(process.env.NEXT_PUBLIC_GOOGLE_AUTH_LOGIN);
 }
-const handelSignin = () => {
-    //handel sigin
-    console.log('handel sigin in');
-}
-const handelSignup = () => {
-    //handel sigup
-    console.log('handel sign up');
-}
+// const handelSignin = () => {
+//     //handel sigin
+//     console.log('handel sigin in');
+// }
+// const handelSignup = () => {
+//     //handel sigup
+//     console.log('handel sign up');
+//     console.log(name, email, password, 'n');
+// }
+
 
 export default function Mainn({ isSignup, signupValue, signupPage }) {
     console.log(process.env.GOOGLE_AUTH_SIGNUP, 'clien-browser');
@@ -52,6 +55,12 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
     }, [])
 
     let [isSignupActive, setIsSignupActive] = useState(signupPage)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const [email2, setEmail2] = useState('')
+    const [password2, setPassword2] = useState('')
     const containerClass = classNames(styles.container, {
         [styles['right-panel-active']]: isSignupActive
     });
@@ -61,6 +70,102 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
     const openSignInPage = () => {
         setIsSignupActive(false)
     }
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value)
+    }
+    const handleEmail = (event) => {
+        setEmail(event.target.value)
+    }
+    // console.log(this.state.name);
+    const handleName = (event) => {
+        setName(event.target.value)
+    }
+
+    const handlePassword2 = (event) => {
+        setPassword2(event.target.value)
+    }
+    const handleEmail2 = (event) => {
+        setEmail2(event.target.value)
+    }
+
+    const handelSignin = () => {
+        //handel sigin
+        console.log('handel sigin in');
+        console.log(email2, password2, 'lk');
+
+        let data = { email: email2, password: password2 }
+        async function doSignIn() {
+            let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, {
+                method: 'POST',
+                credentials: 'include',
+                body: JSON.stringify(data),
+                headers: { 'content-type': 'application/json' }
+            })
+            let newRes = await res.json()
+            console.log(res, 'lll');
+            console.log(newRes, 'llllll');
+
+            if (newRes.err) {
+                if (res.status == 404) {
+                    toast.error("User don't exist!", { theme: "dark" });
+                    setPassword2('')
+                    setEmail2('')
+                    setTimeout(() => {
+                        openSignUpPage()
+                    }, 1500);
+                } else {
+                    toast.error("Bad Credentials", { theme: "dark" })
+                    setPassword2('')
+                }
+            } else {
+                toast.success("Logdin sucess", { theme: "dark" });
+                // setTimeout(() => {
+                //     openSignInPage()
+                // }, 5000);
+
+            }
+            // clear field
+            setEmail('')
+            setName('')
+            setPassword('')
+        }
+        doSignIn()
+    }
+    const handelSignup = () => {
+        //handel sigup
+        console.log('handel sign up');
+        console.log(name, email, password, 'n');
+        let data = { name, email, password }
+        async function doSignUp() {
+            let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/signup`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'content-type': 'application/json' }
+            })
+            res = await res.json()
+            console.log(res, 'lrs');
+            if (res.err) {
+                toast.error("User allready exist ha ha!", { theme: "dark" });
+                setTimeout(() => {
+                    openSignInPage()
+                }, 1000);
+            } else {
+                toast.success("Verify Your Email before signin", { theme: "dark" });
+                setTimeout(() => {
+                    openSignInPage()
+                }, 10000);
+
+            }
+            // clear field
+            setEmail('')
+            setName('')
+            setPassword('')
+        }
+        doSignUp()
+    }
+
+
     // useEffect(() => {
     // }, []);
 
@@ -77,9 +182,9 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
                         {/* <a href="#" className={`social ${styles.social}`}><i className="fab fa-linkedin-in"></i></a> */}
                     </div>
                     <span className={styles.span}>or use your email for registration</span>
-                    <input type="text" placeholder="Name" className={styles.input} />
-                    <input type="email" placeholder="Email" className={styles.input} />
-                    <input type="password" placeholder="Password" className={styles.input} />
+                    <input type="text" placeholder="Name" value={name} onChange={handleName} className={styles.input} />
+                    <input type="email" placeholder="Email" value={email} onChange={handleEmail} className={styles.input} />
+                    <input type="password" value={password} placeholder="Password" onChange={handlePassword} className={styles.input} />
                     <button className={styles.button} onClick={handelSignup}>Sign Up</button>
                 </form>
             </div>
@@ -107,8 +212,8 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
                         {/* <a href="#" className={`social ${styles.social}`}><i className="fab fa-linkedin-in"></i></a> */}
                     </div>
                     <span className={styles.span}>or use your account</span>
-                    <input type="email" placeholder="Email" className={styles.input} />
-                    <input type="password" placeholder="Password" className={styles.input} />
+                    <input type="email" placeholder="Email" value={email2} onChange={handleEmail2} className={styles.input} />
+                    <input type="password" placeholder="Password" value={password2} onChange={handlePassword2} className={styles.input} />
                     <a href="#" className={styles.a}>Forgot your password?</a>
                     <button className={styles.button} onClick={handelSignin} >Sign In</button>
                 </form>
