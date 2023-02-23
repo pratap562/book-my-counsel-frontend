@@ -27,7 +27,7 @@ export const Navbar = () => {
                     <span class="material-symbols-outlined">search</span>
                 </div>
                 <div className={styles.auth}>
-                    <Link className={styles.signupLnk} href={'/signinsignup'}>
+                    <Link className={styles.signupLnk} href={'/signinsignup?#'}>
                         <div className={styles.signupBtn}>Login/signup</div>
                     </Link>
                 </div>

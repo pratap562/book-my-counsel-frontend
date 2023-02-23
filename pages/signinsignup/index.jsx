@@ -102,7 +102,13 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
                 body: JSON.stringify(data),
                 headers: { 'content-type': 'application/json' }
             })
+            console.log(res.url)
+            console.log(res, 'teting')
             let newRes = await res.json()
+            console.log(newRes.redirect_uri);
+            if (newRes.redirect_uri) {
+                Router.push(newRes.redirect_uri)
+            }
             console.log(res, 'lll');
             console.log(newRes, 'llllll');
 
@@ -214,7 +220,7 @@ export default function Mainn({ isSignup, signupValue, signupPage }) {
                     <span className={styles.span}>or use your account</span>
                     <input type="email" placeholder="Email" value={email2} onChange={handleEmail2} className={styles.input} />
                     <input type="password" placeholder="Password" value={password2} onChange={handlePassword2} className={styles.input} />
-                    <a href="#" className={styles.a}>Forgot your password?</a>
+                    <a className={styles.a}>Forgot your password?</a>
                     <button className={styles.button} onClick={handelSignin} >Sign In</button>
                 </form>
             </div>
