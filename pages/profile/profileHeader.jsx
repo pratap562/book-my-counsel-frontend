@@ -1,6 +1,5 @@
 import React from "react";
 import { Time } from "./Time";
-// import icons from "boxicons"
 const data = { name: "mg", add: "maghar", edu: "BA" };
 const ProfileHeader = (props) => {
   const data = props.props;
@@ -20,7 +19,7 @@ const ProfileHeader = (props) => {
                 {data.location}
                 <span> - </span>
               </p>
-              {<Time/>}
+              {<Time />}
             </div>
           </div>
         </div>
