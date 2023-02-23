@@ -13,15 +13,18 @@ export const Navbar = () => {
                     <div>
                         <Image src={logo} ></Image>
                     </div>
-                    <div>SchedulMeet</div>
                 </div>
                 <div className={styles.middle}>
-                    <div>Individuals</div>
+                    {/* <div>Individuals</div>
                     <div>Teams</div>
                     <div>Enterprise</div>
-                    <div>Product</div>
-                    <div>Priceing</div>
-                    <div>Resources</div>
+                    <div>Product</div> */}
+                    {/* <div>Priceing</div>
+                    <div>Resources</div> */}
+                </div>
+                <div className={styles.search} >
+                    <input className={styles.searchInput} type="text" placeholder="Search here" />
+                    <span class="material-symbols-outlined">search</span>
                 </div>
                 <div className={styles.auth}>
                     <Link className={styles.signupLnk} href={'/signinsignup'}>

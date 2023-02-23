@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import lawyer from "../images/lawyer.png"
 // import logo from "../images/logo.jpg"
 import { use, useEffect } from "react";
 import styles from "./front.module.css"
@@ -24,12 +25,12 @@ export default function Front({ justLogdin }) {
             </span>
             <div className={styles.left}>
                 <div>
-                    <div>Easy</div>
-                    <div>scheduling</div>
-                    <div>ahead</div>
+                    <div>Book</div>
+                    <div>appointment</div>
+                    <div>with Lawyer</div>
                 </div>
                 <div>
-                    SchedulMeet is your scheduling automation platform for eliminating the back-and-forth emails for finding the perfect time — and so much more.
+                    The Lawyer Appointment Booking App lets users book appointments with lawyers for legal advice, with a simple and secure payment system.
                 </div>
                 <div>
                     <input placeholder="Enter your email" />
@@ -40,7 +41,7 @@ export default function Front({ justLogdin }) {
                 </div>
             </div>
             <div className={styles.right}>
-                <img src="https://images.ctfassets.net/k0lk9kiuza3o/46W8NE43rD54MveL20rPp5/e18c62fb5617db69691c4ec475005c06/Homepage-Hero-new.png?w=1366&h=1132&q=50&fm=webp" />
+                <Image src={lawyer} />
             </div>
         </div>
     )

@@ -1,0 +1,30 @@
+.container {
+  border: 1px solid red;
+  display: flex;
+  height: 100vh;
+  background-color: black;
+  /* flex-direction: column; */
+}
+.container > div {
+  /* border: 2px solid blue; */
+  margin: auto;
+  width: 300px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  background-color: #191d23;
+  border: 0.1px solid rgb(78, 78, 78);
+}
+.container > div > div {
+  margin-top: 20px;
+}
+.container > div:first-child {
+  color: white;
+}
+.container > div > div:first-child {
+  /* align-self: center;
+  margin-left: 34px; */
+}

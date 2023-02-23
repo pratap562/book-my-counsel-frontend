@@ -1,0 +1,29 @@
+.input {
+  width: 240px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(16, 16, 16);
+  color: rgb(205, 205, 205);
+  border: 0.1px solid rgb(78, 78, 78);
+  padding-left: 10px;
+  outline: none;
+}
+.button {
+  background-color: #238636;
+  width: 250px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* marginto */
+}
+.button:hover {
+  background-color: #1e9c37;
+}
+.input:focus {
+  border: 2px solid rgb(23, 117, 225);
+}
