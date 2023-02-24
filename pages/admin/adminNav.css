@@ -1,0 +1,170 @@
+
+button{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: #111;
+
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    
+}
+
+.logout-btn {
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+  }
+  
+  .logout-btn .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logout-btn .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .logout-btn .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  .logout-btn:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .logout-btn:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  .logout-btn:hover .arrow:before {
+    right: 0;
+  }
+
+.nav-div{
+    width: 100%;
+    height: 4rem;
+    border-bottom: 1px solid gray;
+    display: grid;
+    grid-template-columns: 8rem 1fr 2fr 1fr 8rem;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    grid-column: 2/3;
+
+
+}
+
+.menu-link{
+    grid-column: 3/4;
+
+}
+.menu-link>ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* .menu-link>ul li a:hover{
+    transition: all .5s;
+    color: #645bff;
+}
+.menu-link>ul li a:active{
+   font-weight: bold;
+} */
+
+.profile{
+    grid-column: 4/5;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.hamburger-menu{
+    display: none;
+}
+
+@media (max-width: 998px) {
+    .nav-div{
+        grid-template-columns: 2rem 1fr 2fr 1fr 2rem;
+        grid-template-rows: auto auto;
+    }
+    .menu-link{
+        display: none;
+    }
+    .mobile-menu{
+        grid-column: 1/6;
+        grid-row: 2/3;
+        z-index: 11;
+        /* width: 100%;/ */
+        background: #fff;
+        padding: 0 2rem;
+        /* display: none; */
+    }
+    .menu-link>ul{
+        flex-direction: column;
+        /* gap: 8px; */
+        align-items: start;
+        width: 100%;
+        
+    }
+
+    .menu-link>ul>li{
+        width: 100%;
+    }
+
+    .menu-link>ul NavLink{
+        padding: 8px 0;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid gainsboro;
+    }
+
+    .logout-btn{
+        display: none;
+    }
+
+    .hamburger-menu{
+        display: block;
+        font-size: 130%;
+    }
+}
