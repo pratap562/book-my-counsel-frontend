@@ -1,60 +1,82 @@
 .advocate {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 margin: 2%;
-width:60%;
+width:80%;
 
-  }
-  
-  .advocate-picture {
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 5px #ccc;
-  }
-  
-  .advocate-name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-  
-  .advocate-role {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .advocate-location {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
+}
+.filtered-advocate-list{
+  width:65%;
+  margin: auto;
+  padding: 2%;
+  border: 1px solid rgb(166, 165, 165);
+  background-color: rgb(229, 238, 242);
+}
+body{
+  background-color: rgb(186, 230, 247);
+}
+.advocate-picture {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.advocate-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: green;
+}
+
+.advocate-role {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: rgb(25, 25, 85);
+}
+
+.advocate-location {
+  font-size: 16px;
+  margin-bottom: 10px;
+color: rgb(245, 173, 59);
+}
+
 .display-flex{
-    display: flex;
+  display: flex;
 }
 .display-flex>*{
-    margin: 1%;
+  margin: 1%;
+}
+.filter-section{
+display:flex;
+margin: 1%;
+padding: 1%;
+}
+.filter-section>*{
+margin: 1%;
+padding: 1%;
 }
 
-  .advocate-pricing,
-  .advocate-earnings,
-  .advocate-worked-hours,
-  .advocate-jobs,
-  .advocate-fluent-languages,
-  .advocate-conversational-languages,
-  .advocate-skills,
-  .advocate-education {
-    font-size: 14px;
-    margin-bottom: 5px;
-    margin-left: 1%;
-  }
-  .advocate-description{
-    margin-left: 1%;
-  }
+
+.advocate-pricing,
+.advocate-earnings,
+.advocate-worked-hours,
+.advocate-jobs,
+.advocate-fluent-languages,
+.advocate-conversational-languages,
+.advocate-skills,
+.advocate-education {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-left: 1%;
+}
+.advocate-description{
+  margin-left: 1%;
+}
