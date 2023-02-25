@@ -45,6 +45,11 @@ const Advocate = ({
 
 
 const AdvocateList = ({ advocates }) => {
+
+  const handleAdvocateClick = (id) => {
+    // do something with the clicked advocate's id
+    console.log(`Advocate with id ${id} was clicked`);
+  };
   return (
     <div>
       {advocates.map(advocate => (
