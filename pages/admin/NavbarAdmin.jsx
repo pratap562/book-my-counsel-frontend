@@ -12,10 +12,25 @@ const AdminNav = ()=>{
 
             <div className={showMenu ? "mobile-menu":"menu-link"}>
                 <ul>
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/Allapplicants">All Applicants</NavLink></li>
-                    <li><NavLink to="/Pendingapplicants">Pending Applicants</NavLink></li>
-                    <li><NavLink to="/Varifiedapplicants">Varified Applicants</NavLink></li>
+                    <li><NavLink to="/" style={({ isActive }) => ({
+                                color: isActive ? '#fff' : '#545e6f',
+                                 background: isActive ? '#7600dc' : '#f0f0f0',
+                                 padding: '4px 8px',
+                                 borderRadius: "4px"
+                             })}>
+                    <span >Home</span></NavLink></li>
+                    <li><NavLink to="/Pendingapplicants" style={({ isActive }) => ({
+                                color: isActive ? '#fff' : '#545e6f',
+                                 background: isActive ? '#7600dc' : '#f0f0f0',
+                                 padding: '4px 8px',
+                                 borderRadius: "4px"
+                             })}>Pending Applicants</NavLink></li>
+                    <li><NavLink to="/Varifiedapplicants" style={({ isActive }) => ({
+                                color: isActive ? '#fff' : '#545e6f',
+                                 background: isActive ? '#7600dc' : '#f0f0f0',
+                                 padding: '4px 8px',
+                                 borderRadius: "4px"
+                             })}>Varified Applicants</NavLink></li>
                     
                 </ul>
 
