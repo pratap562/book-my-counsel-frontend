@@ -9,58 +9,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { responseCheck } from '../../../utils/responseMiddleware'
 import Router from 'next/router';
 
-// let newData = [
-//     [],
-//     [
-//         {
-//             "_id": "63fa8275cdbad007b8932993",
-//             "advocate_id": "63fa557590db07afb5f19536",
-//             "client_id": "undefined",
-//             "date": "27-Feb-2023",
-//             "format_date": 20230227,
-//             "time": 9,
-//             "canceled": false,
-//             "__v": 0
-//         },
-//         {
-//             "_id": "63fa8275cdbad007b8932994",
-//             "advocate_id": "63fa557590db07afb5f19536",
-//             "client_id": "undefined",
-//             "date": "27-Feb-2023",
-//             "format_date": 20230227,
-//             "time": 11,
-//             "canceled": false,
-//             "__v": 0
-//         }
-//     ],
-//     [
-//         {
-//             "_id": "63fa8275cdbad007b8932996",
-//             "advocate_id": "63fa557590db07afb5f19536",
-//             "client_id": "undefined",
-//             "date": "28-Feb-2023",
-//             "format_date": 20230228,
-//             "time": 9,
-//             "canceled": false,
-//             "__v": 0
-//         }
-//     ],
-//     [],
-//     [
-//         {
-//             "_id": "63fa8275cdbad007b8932997",
-//             "advocate_id": "63fa557590db07afb5f19536",
-//             "client_id": "undefined",
-//             "date": "02-Mar-2023",
-//             "format_date": 20230302,
-//             "time": 9,
-//             "canceled": false,
-//             "__v": 0
-//         }
-//     ],
-//     [],
-//     []
-// ]
 
 let lastDate = new Date();
 
@@ -93,34 +41,12 @@ const SLOT = ({ advocateId, newData }) => {
         return res
     }
 
-    // useEffect(() => {
-    //     let newData = [...data]
-    //     for (let i = 0; i < 7; i++) {
-    //         let tmp = getNextDate(i)
-    //         for (let j = 0; j < 24; j++) {
-    //             newData[i][j].date = tmp
-    //             console.log(newData[i][j].date, 'daata', i, j)
-    //         }
-    //     }
-    //     lastDate = new Date();
-    //     console.log(newData, 'new');
-    // }, [])
-
 
 
     const bookSlot = (row, col) => {
-        // let prvStatus = data[row][col].truth
-        // console.log(prvStatus);
         return (() => {
-            // console.log(newData[row][col]._id)
             const slotId = newData[row][col]._id
             Router.push(`/advocate/bookslots/4/${slotId}`)
-            // console.log(data[row][col].truth);
-            // let newData = [...data]
-            // console.log(newData[row][col].truth, 'nn');
-            // newData[row][col].truth = !data[row][col].truth
-            // console.log(newData);
-            // setData(newData)
         }
         )
     }
@@ -193,6 +119,7 @@ const getServerSideProps = async ({ params }) => {
         }
     } catch (err) {
         console.log(err, 'getting error')
+        return
     }
 
 
