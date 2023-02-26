@@ -3,6 +3,7 @@
   padding: 170px 10%;
   justify-content: space-between;
   font-family: "Poppins", sans-serif;
+  background-color: #2a263d;
   /* z-index: 8; */
 }
 
@@ -14,14 +15,18 @@
   width: 100%;
   /* border: 1px solid black; */
 }
+.left > div:last-child {
+  color: #476788;
+}
 
 .left > div:first-child {
   margin-bottom: 20px;
+  color: #006bff;
 }
 .left > div:first-child > div {
   font-size: 50px;
   font-weight: 900;
-  color: #0b3558;
+  /* color: #0b3558; */
   margin-top: -5px;
 }
 .left > div:first-child > div:last-child {
