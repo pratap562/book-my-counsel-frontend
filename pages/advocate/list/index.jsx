@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './AdvocateList.css';
+import './style';
 
 const Advocate = ({
   name,
@@ -24,7 +24,7 @@ const Advocate = ({
       <h2 className="advocate-name">{name}</h2>
       <h3 className="advocate-role">{role_title}</h3>
       <div className='display-flex'>
-      <p className="advocate-location">{location}</p>
+      <p className="advocate-location"><b>Location:</b>{location}</p>
       <p className="advocate-pricing"><b>Pricing:</b> {pricing}</p>
       <p className="advocate-earnings"><b>Total Earnings:</b> {total_Earnings}</p>
       <p className="advocate-worked-hours"><b>Total Worked Hour:</b> {total_worked_hour}</p>
@@ -45,10 +45,15 @@ const Advocate = ({
 
 
 const AdvocateList = ({ advocates }) => {
+
+  const handleAdvocateClick = (id) => {
+    // do something with the clicked advocate's id
+    console.log(`Advocate with id ${id} was clicked`);
+  };
   return (
     <div>
       {advocates.map(advocate => (
-        <Advocate {...advocate} key={advocate._id} />
+        <Advocate {...advocate} key={advocate._id} onClick={() => handleAdvocateClick(advocate._id)} />
       ))}
     </div>
   );
@@ -57,36 +62,33 @@ const AdvocateList = ({ advocates }) => {
 
 const App = () => {
   const [advocates, setAdvocates] = useState([]);
-  const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [roles, setRoles] = useState([]);
   const [selectedRole, setSelectedRole] = useState('');
   const [sorting, setSorting] = useState('asc');
 
   // Fetch advocates from API using query params for filtering and sorting
   useEffect(() => {
     const fetchAdvocates = async () => {
-      const url = `/api/advocates?location=${selectedLocation}&role=${selectedRole}&sort=${sorting}`;
+
+        let url = "http://localhost:3200/lawyer?";
+        if (selectedLocation) {
+          url += `location=${selectedLocation}&`;
+        }
+        if (selectedRole) {
+          url += `role_title=${selectedRole}&`;
+        }
+        if (sorting) {
+          url += `sort=${sorting}`;
+        }
+      
       const response = await fetch(url);
       const data = await response.json();
       setAdvocates(data);
+
     };
 
     fetchAdvocates();
   }, [selectedLocation, selectedRole, sorting]);
-
-  // Fetch locations and roles for filtering options
-  useEffect(() => {
-    const fetchFilters = async () => {
-      const url = '/api/filters';
-      const response = await fetch(url);
-      const data = await response.json();
-      setLocations(data.locations);
-      setRoles(data.roles);
-    };
-
-    fetchFilters();
-  }, []);
 
 
   // Handle filter and sorting changes
@@ -110,28 +112,33 @@ const App = () => {
           <label htmlFor="location-select">Location:</label>
           <select id="location-select" value={selectedLocation} onChange={handleLocationChange}>
             <option value="">All</option>
-            {locations.map((location) => (
-              <option key={location} value={location}>
-                {location}
-              </option>
-            ))}
+            <option value="Delhi">Delhi</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Bangalore">Bangalore</option>
+    <option value="Assam">Assam</option>
+    <option value="Jaipur">Jaipur</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Rishikesh">Rishikesh</option>
           </select>
         </div>
         <div className="filter-option">
           <label htmlFor="role-select">Role:</label>
           <select id="role-select" value={selectedRole} onChange={handleRoleChange}>
             <option value="">All</option>
-            {roles.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))
-            }
+         
+                 <option value="Property & Civil Matters">Property & Civil Matters</option>
+    <option value="Money Recovery">Money Recovery</option>
+    <option value="Matrimonial">Matrimonial</option>
+    <option value="Buisness Consultation">Buisness Consultation</option>
+    <option value="Notices">Notices</option>
+    <option value="Agreements & Documentation">Agreements & Documentation</option>
+             
           </select>
         </div>
         <div className="filter-option">
           <label htmlFor="sorting-select">Sort by:</label>
           <select id="sorting-select" value={sorting} onChange={handleSortingChange}>
+          <option value="">All Prices</option>
             <option value="asc">Price (Low to High)</option>
             <option value="desc">Price (High to Low)</option>
           </select>
