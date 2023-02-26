@@ -35,6 +35,8 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
 }
 .check img {
   width: 200px;
@@ -95,4 +97,9 @@
 }
 .invisible {
   display: none;
+}
+
+.dashboard {
+  padding: 10px 20px;
+  background-color: green;
 }
