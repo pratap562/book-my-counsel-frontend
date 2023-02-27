@@ -4,10 +4,23 @@ const Pendingapplicants = (props)=>{
     const ApplicantsData = props.props
     
     const [applicants, setApplicants] = useState(ApplicantsData)
+    
     const updateVarification = (index, isVarified)=>{
         const update = [...applicants]
         update[index].isVarified = !isVarified
         setApplicants(update)
+
+        let Api = `http://localhost:3200/advocate/verify/${userId}`;
+        let data = fetch(Api, {
+          method: "PATCH",
+        });
+        data = data.json();
+        if (data.status == "error" || data.status == "fail") {
+          alertMsg("error while varifying", "error");
+        } else {
+          alertMsg("successfully done!");
+        }
+
     }
     return(
         
