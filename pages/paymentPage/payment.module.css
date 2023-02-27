@@ -1,0 +1,26 @@
+.success-div {
+  text-align: center;
+  margin-top: 5%;
+}
+.success {
+  width: 350px;
+  height: 350px;
+  margin: auto;
+}
+.success-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.payment-btn {
+  padding: 10px 20px;
+  border: 0;
+  background: #000;
+  color: #fff;
+  border-radius: 18px;
+  transition: all 0.4s;
+}
+
+.payment-btn:hover {
+  background: #645bff;
+}

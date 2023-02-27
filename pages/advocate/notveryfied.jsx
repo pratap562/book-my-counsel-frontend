@@ -3,9 +3,12 @@ import cookieparser from '../../utils/cookieparser'
 import { serialize } from 'cookie'
 
 import styles from './notveryfied.module.css';
+import { isValidElement, useEffect, useState } from 'react';
 
 
 function VerificationMessage({ isVerified }) {
+    console.log(isVerified, 'verified')
+
     const openDashboard = () => {
         Router.push('/advocate/dashboard')
     }
@@ -34,64 +37,37 @@ function VerificationMessage({ isVerified }) {
     );
 }
 
-export default function Home({ isVerified }) {
-
-    return <VerificationMessage isVerified={isVerified} />;
-}
-
-
-export async function getServerSideProps(context) {
-    // console.log(req.headers.cookie, 'coookiees')
-    const cookie = context.req.headers.cookie
-    let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/updatejwt`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            cookie
+export default function Home() {
+    const [dataFetched, setDataFetched] = useState(false)
+    let [isVerified, setIsVerified] = useState(false)
+    // isVerified = false
+    useEffect(() => {
+        const updateJwt = async () => {
+            let ress = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/updatejwt`, {
+                method: 'GET',
+                credentials: 'include'
+            })
+            let newRes = await ress.json()
+            if (newRes.msg == 'plg login again' || newRes.msg == 'plg login') {
+                Router.push('/signupsignin')
+            } else if (newRes.msg == 'varification fail') {
+                isVerified = 'fail'
+            } else if (newRes.msg == "verifyed sucessfully") {
+                isVerified = true
+            } else {
+                isVerified = false
+            }
+            console.log(isVerified, 'isveififi')
+            setIsVerified(isVerified)
+            setDataFetched(true)
         }
+        updateJwt()
     })
-    const options = {
-        httpOnly: true,
-        path: '/',
-        maxAge: 3600,
-    };
-    // const cookies = res.headers.get('set-cookie');
-    let newRes = await res.json()
-    console.log(newRes, 'newres')
-    const { token, refresh_token } = newRes
-    console.log(token, refresh_token, 'i')
-    const serializedCookie = serialize('token', token, options);
-    context.res.setHeader('Set-Cookie', serializedCookie);
-    const serializedCookie2 = serialize('refresh_token', refresh_token, options);
-    context.res.setHeader('Set-Cookie', serializedCookie);
 
-    if (newRes.msg == 'plg login again' || newRes.msg == 'plg login') {
-        return {
-            redirect: {
-                destination: '/signinsignup', // The destination URL to redirect to
-                permanent: false, // Set this to true if the redirect is permanent
-            },
-        }
-    } else if (newRes.msg == 'varification fail') {
-        return {
-            props: {
-                isVerified: 'failed'
-            }
-        }
-    } else if (newRes.msg == "verifyed sucessfully") {
-        return {
-            props: {
-                isVerified: true
-            }
-        }
-    } else {
-        return {
-            props: {
-                isVerified: false
-            }
-        }
-    }
-
+    return (
+        <>
+            {dataFetched ? <VerificationMessage isVerified={isVerified} /> : <div>Loading...</div>}
+        </>
+    )
 }
 
-// export default notveryfied

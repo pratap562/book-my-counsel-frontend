@@ -1,16 +1,16 @@
-* {
+/* * {
   margin: 0;
 }
 body {
-  padding: 10px 100px;
-}
-
+} */
+/* 
 :root {
   --borderColor: #dad8d8;
-}
+} */
 
 .App {
   /* margin: 10px; */
+  padding: 10px 200px;
   font-family: sans-serif;
   text-align: center;
   border: 1px solid var(--borderColor);
@@ -73,7 +73,7 @@ body {
   font-size: 14px;
 }
 
-button {
+.button {
   cursor: pointer;
 }
 
@@ -140,7 +140,7 @@ button {
   background-color: #57e8b3;
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
-h3 {
+.h3 {
   padding: 20px 0;
 }
 
@@ -290,9 +290,9 @@ h3 {
 }
 
 @media screen and (max-width: 768px) {
-  body {
+  /* body {
     padding: 4px;
-  }
+  } */
   .profile-right {
     position: fixed;
     bottom: 4px;

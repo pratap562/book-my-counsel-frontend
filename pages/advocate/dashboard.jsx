@@ -3,7 +3,9 @@ import { useEffect, useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import { responseCheck } from '../../utils/responseMiddleware'
 import Router from 'next/router';
-
+import { Button } from '../../component/button'
+// import 
+import { Navbar } from '@/component/navbar'
 
 let lastDate = new Date();
 
@@ -46,62 +48,72 @@ const SLOT = ({ advocateId, newData }) => {
         )
     }
 
-    const addSlot = async () => {
-        // send those slot which should book
-        let slots = []
-        data.forEach((day, i) => {
-            day.forEach((slot) => {
-                if (slot.truth) {
-                    slots.push(slot)
-                }
-            })
-        })
-        // console.log(slots);
-        let allSlots = { slots }
-
-        let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/add`, {
-            method: 'POST',
-            body: JSON.stringify(allSlots),
-            credentials: 'include',
-            headers: { 'content-type': 'application/json' }
-        })
-        // console.log(res.status)
-        responseCheck({ res, toast, fail_uri: '', pass_uri: '/advocate/dashboard' })
-        res = await res.json()
-        // console.log(res, res.status, 'resss');
+    const createSlot = () => {
+        Router.push('/advocate/slots')
     }
+    // const addSlot = async () => {
+    //     // send those slot which should book
+    //     let slots = []
+    //     data.forEach((day, i) => {
+    //         day.forEach((slot) => {
+    //             if (slot.truth) {
+    //                 slots.push(slot)
+    //             }
+    //         })
+    //     })
+    //     // console.log(slots);
+    //     let allSlots = { slots }
+
+    //     let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/add`, {
+    //         method: 'POST',
+    //         body: JSON.stringify(allSlots),
+    //         credentials: 'include',
+    //         headers: { 'content-type': 'application/json' }
+    //     })
+    //     // console.log(res.status)
+    //     responseCheck({ res, toast, fail_uri: '', pass_uri: '/advocate/dashboard' })
+    //     res = await res.json()
+    //     // console.log(res, res.status, 'resss');
+    // }
 
     let a = 'aaja'
     // console.log(data, 'data');
     return (
-        <div className={style.container}>
-            <ToastContainer autoClose={2000} />
-            <div className={style.headings}>
-                <h2>Dashboard</h2>
-                {/* <h2 className={style.submit} onClick={addSlot}>Submit</h2> */}
+        <>
+            <div className={style.nav}>
+                <Navbar></Navbar>
             </div>
-            <div className={style.week}>
-                {newData.map((days, i) => {
-                    return (
-                        <div className={style.day} key={i}>
-                            <div className={style.date}>{getNextDate(i)}</div>
-                            <div className={style.day_slots}>
-                                {days.length == 0 ? [] : days.map((time, j) => {
-                                    return (
-                                        [<div key={j} className={`${style.slot} ${style.false} ${time.client_id == 'undefined' ? style.openn : style.bookedd} `}>
-                                            <div>
-                                                {`${time.time}:00`}
-                                            </div>
-                                            {time.client_id == 'undefined' ? <div className={style.open}>Open</div> : <div className={style.booked} >Booked</div>}
-                                        </div>, (j + 1) % 3 == 0 ? <div className={style.line}></div> : (<></>)]
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
+            {newData.length == 0 ? [<div onClick={createSlot} className={style.nothingParent}><div className={style.nothing}>Nothing to show here</div>, <Button text='create-slots' /></div>] :
+                <div className={style.container}>
+                    <ToastContainer autoClose={2000} />
+                    <div className={style.headings}>
+                        <h2>Dashboard</h2>
+                        {/* <h2 className={style.submit} onClick={addSlot}>Submit</h2> */}
+                    </div>
+                    <div className={style.week}>
+                        {newData.map((days, i) => {
+                            return (
+                                <div className={style.day} key={i}>
+                                    <div className={style.date}>{getNextDate(i)}</div>
+                                    <div className={style.day_slots}>
+                                        {days.length == 0 ? [] : days.map((time, j) => {
+                                            return (
+                                                [<div key={j} className={`${style.slot} ${style.false} ${time.client_id == 'undefined' ? style.openn : style.bookedd} `}>
+                                                    <div>
+                                                        {`${time.time}:00`}
+                                                    </div>
+                                                    {time.client_id == 'undefined' ? <div className={style.open}>Open</div> : <div className={style.booked} >Booked</div>}
+                                                </div>, (j + 1) % 3 == 0 ? <div className={style.line}></div> : (<></>)]
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            }
+        </>
     )
 }
 
@@ -133,12 +145,21 @@ const getServerSideProps = async (context) => {
         })
         data = await data.json()
         console.log(data)
-        // console.log(data.data[1][0])
-        return {
-            props: { newData: data.data }
+        if (data.err) {
+            return {
+                props: { newData: [] }
+            }
+        } else {
+            return {
+                props: { newData: data.data }
+            }
         }
+        // console.log(data.data[1][0])
     } catch (err) {
         console.log(err, 'getting error')
+        return {
+            props: { newData: [] }
+        }
         return
     }
 

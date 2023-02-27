@@ -1,0 +1,25 @@
+.container {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 100px; */
+  align-items: center;
+  justify-content: center;
+  /* justify-items: center; */
+  background-color: #2a263d;
+  height: 100vh;
+  margin: -10px;
+}
+
+.container .button {
+  /* margin: auto; */
+  font-size: 20px;
+  background-color: green;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.container > div:last-child {
+  height: 50px;
+  width: 200px;
+  font-size: 18px;
+}

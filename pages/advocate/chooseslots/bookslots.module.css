@@ -113,7 +113,32 @@
   /* border: 1px solid rgb(76, 76, 76); */
   background-color: rgb(76, 76, 76);
 }
+.nothingParent {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 100px; */
+  align-items: center;
+  justify-content: center;
+  /* justify-items: center; */
+  background-color: #2a263d;
+  height: 100vh;
+  margin: -10px;
+}
 
+.nothingParent > div:first-child {
+  /* margin: auto; */
+  font-size: 20px;
+  color: white;
+}
+.nothingParent > div:last-child {
+  height: 50px;
+  width: 200px;
+  font-size: 18px;
+}
+.nav {
+  margin-bottom: 50px;
+}
 @media only screen and (min-width: 768px) and (max-width: 1500px) {
   /* .week {
     grid-template: repeat(2, 320vh) / repeat(5, 1fr);
