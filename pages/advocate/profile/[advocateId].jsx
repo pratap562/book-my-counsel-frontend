@@ -1,5 +1,5 @@
-import { Description } from "./Description";
-import { ProfileHeader } from "./profileHeader";
+import { Description } from "../../../component/profile/Description";
+import { ProfileHeader } from "../../../component/profile/profileHeader";
 import dynamic from "next/dynamic";
 import style from './profile.module.css'
 const dataaa = {

@@ -1,6 +1,6 @@
 import { ToastContainer, toast } from 'react-toastify';
 import style from './bookslots.module.css'
-import { Payment } from '../../paymentPage/Payment'
+import { Payment } from '../../../component/payments/Payment'
 export default function ({ slotId }) {
     const bookSlot = async () => {
         let data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/book/${slotId}`, {
