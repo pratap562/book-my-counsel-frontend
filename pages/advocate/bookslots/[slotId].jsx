@@ -1,14 +1,6 @@
-
-
-
-
-
-
-
-
-
 import { ToastContainer, toast } from 'react-toastify';
-
+import style from './bookslots.module.css'
+import { Payment } from '../../paymentPage/Payment'
 export default function ({ slotId }) {
     const bookSlot = async () => {
         let data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/book/${slotId}`, {
@@ -18,14 +10,26 @@ export default function ({ slotId }) {
         data = await data.json()
         if (data.msg == 'slot booked sucessfull') {
             toast.success("slot booked sucessfully", { theme: 'dark' })
+        } else if (data.err || data.msg == 'plg login' || data.msg == 'plg login again') {
+            let msg = ''
+            if (data.err) {
+                msg = data.err
+            } else if (data.msg) {
+                msg = data.msg
+            }
+            toast.error(msg, { theme: 'dark' })
         }
         console.log(data)
     }
+    let dataaa = [{ name: 'Book My Councel', pricing: 459, slotId, image: 'https://i.ibb.co/10VdkVn/Book-My-Counsel-1.png' }]
     return (
-        <>
+        <div className={style.container}>
             <ToastContainer autoClose={2000} />
-            <button onClick={bookSlot}>Book this slot</button>
-        </>
+
+
+            <Payment props={dataaa}></Payment>
+            {/* <button className={style.button} onClick={bookSlot}>Book this slot</button> */}
+        </div>
     )
 }
 

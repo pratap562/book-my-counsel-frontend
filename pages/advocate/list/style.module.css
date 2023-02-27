@@ -3,20 +3,19 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
-margin: 2%;
-width:80%;
-
+  margin: 2%;
+  width: 80%;
 }
-.filtered-advocate-list{
-  width:65%;
+.filtered-advocate-list {
+  width: 65%;
   margin: auto;
   padding: 2%;
   border: 1px solid rgb(166, 165, 165);
   background-color: rgb(229, 238, 242);
 }
-body{
+/* body{
   background-color: rgb(186, 230, 247);
-}
+} */
 .advocate-picture {
   display: block;
   margin: 0 auto;
@@ -45,25 +44,24 @@ body{
 .advocate-location {
   font-size: 16px;
   margin-bottom: 10px;
-color: rgb(245, 173, 59);
+  color: rgb(245, 173, 59);
 }
 
-.display-flex{
+.display-flex {
   display: flex;
 }
-.display-flex>*{
+.display-flex > * {
   margin: 1%;
 }
-.filter-section{
-display:flex;
-margin: 1%;
-padding: 1%;
+.filter-section {
+  display: flex;
+  margin: 1%;
+  padding: 1%;
 }
-.filter-section>*{
-margin: 1%;
-padding: 1%;
+.filter-section > * {
+  margin: 1%;
+  padding: 1%;
 }
-
 
 .advocate-pricing,
 .advocate-earnings,
@@ -77,6 +75,6 @@ padding: 1%;
   margin-bottom: 5px;
   margin-left: 1%;
 }
-.advocate-description{
+.advocate-description {
   margin-left: 1%;
 }

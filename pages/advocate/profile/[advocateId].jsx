@@ -1,7 +1,8 @@
 import { Description } from "./Description";
 import { ProfileHeader } from "./profileHeader";
-import "./profile.css";
-const data = {
+import dynamic from "next/dynamic";
+import style from './profile.module.css'
+const dataaa = {
   name: "Pratap masai",
   picture:
     "https://images.pexels.com/photos/15624136/pexels-photo-15624136.jpeg?auto=compress&cs=tinysrgb&w=800",
@@ -63,7 +64,7 @@ const data = {
       rating: 4,
       date: "20-20-2022",
       comment:
-        "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+        "laudantium enim quasi est qui                                                                                                 dem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
     },
     {
       name: "Mohammad Gauhar",
@@ -74,11 +75,30 @@ const data = {
     }
   ]
 };
-export default function Profile() {
+function Profile({ res }) {
+  const data = res.data[0]
+  data.reviews = dataaa.reviews
+  console.log(res)
   return (
-    <div className="App">
+    <div className={style.App}>
       <ProfileHeader props={data} />
       <Description props={data} />
     </div>
-  );
+  )
 }
+
+export const getServerSideProps = async ({ params }) => {
+  const { advocateId } = params
+  // http://localhost:3200/lawyer/63fa089d6f6ced4ed113f289
+
+  let res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`)
+  res = await res.json()
+  // console.log(res, '')
+  // console.log(res)
+  return {
+    props: { res }
+  }
+
+}
+
+export default dynamic(() => Promise.resolve(Profile), { ssr: false })

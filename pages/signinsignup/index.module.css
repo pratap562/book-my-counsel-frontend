@@ -56,6 +56,10 @@
   text-transform: uppercase;
   transition: transform 80ms ease-in;
 }
+.navLink {
+  /* background-color: ; */
+  text-decoration: none;
+}
 
 .button:active,
 .ghost:active {

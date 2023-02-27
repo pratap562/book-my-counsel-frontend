@@ -8,6 +8,8 @@ import { useEffect, useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import { responseCheck } from '../../../utils/responseMiddleware'
 import Router from 'next/router';
+import { Button } from '../../../component/button'
+import { Navbar } from '@/component/navbar'
 
 
 let lastDate = new Date();
@@ -46,7 +48,7 @@ const SLOT = ({ advocateId, newData }) => {
     const bookSlot = (row, col) => {
         return (() => {
             const slotId = newData[row][col]._id
-            Router.push(`/advocate/bookslots/4/${slotId}`)
+            Router.push(`/advocate/bookslots/${slotId}`)
         }
         )
     }
@@ -75,51 +77,65 @@ const SLOT = ({ advocateId, newData }) => {
         res = await res.json()
         // console.log(res, res.status, 'resss');
     }
+    const goBack = () => {
+        console.log('i');
+        Router.back()
+    }
 
     let a = 'aaja'
     // console.log(data, 'data');
     return (
-        <div className={style.container}>
-            <ToastContainer autoClose={2000} />
-            <div className={style.headings}>
-                <h2>Add Slots</h2>
-                <h2 className={style.submit} onClick={addSlot}>Submit</h2>
+        <>
+            <div className={style.nav}>
+                <Navbar></Navbar>
             </div>
-            <div className={style.week}>
-                {newData.map((days, i) => {
-                    return (
-                        <div className={style.day} key={i}>
-                            <div className={style.date}>{getNextDate(i)}</div>
-                            <div className={style.day_slots}>
-                                {days.length == 0 ? [] : days.map((time, j) => {
-                                    return (
-                                        [<div key={j} className={`${style.slot} ${style.false}`} onClick={bookSlot(i, j)}>{`${time.time}:00`}</div>, (j + 1) % 3 == 0 ? <div className={style.line}></div> : (<></>)]
-                                    )
-                                })}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        </div>
+            {newData.length == 0 ? [<div className={style.nothingParent}><div className={style.nothing}>All Slots Are Booked</div>, <Button fun={goBack} text='Go-Back' /></div>]
+                : <div className={style.container}>
+                    <ToastContainer autoClose={2000} />
+                    <div className={style.headings}>
+                        <h2>Book your slots</h2>
+                        {/* <h2 className={style.submit} onClick={addSlot}></h2> */}
+                    </div>
+                    <div className={style.week}>
+                        {newData.map((days, i) => {
+                            return (
+                                <div className={style.day} key={i}>
+                                    <div className={style.date}>{getNextDate(i)}</div>
+                                    <div className={style.day_slots}>
+                                        {days.length == 0 ? [] : days.map((time, j) => {
+                                            return (
+                                                [<div key={j} className={`${style.slot} ${style.false}`} onClick={bookSlot(i, j)}>{`${time.time}:00`}</div>, (j + 1) % 3 == 0 ? <div className={style.line}></div> : (<></>)]
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            }
+        </>
     )
 }
 
 const getServerSideProps = async ({ params }) => {
 
     const { advocateId } = params
+    console.log(advocateId)
 
     try {
         let data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/${advocateId}`)
         data = await data.json()
         console.log(data)
-        console.log(data.data[1][0])
+        // console.log(data.data[1][0])
         return {
             props: { advocateId, newData: data.data }
         }
     } catch (err) {
         console.log(err, 'getting error')
-        return
+        return {
+            props: { newData: [] }
+        }
     }
 
 

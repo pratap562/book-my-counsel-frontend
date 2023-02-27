@@ -34,7 +34,7 @@ const ForgotPassword = () => {
             router.push('/advocate/create');
         } else {
             localStorage.setItem('justlogdin', JSON.stringify(true))
-            router.push('/advocate/advocatelist');
+            router.push('/advocate/list');
 
         }
 
