@@ -54,7 +54,7 @@ const App = () => {
     let newData = { ...formValues, education: Education }
     console.log(newData, 'newdata');
 
-    let data = await fetch(`http://localhost:3200/lawyer/post`, {
+    let data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/lawyer/post`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(newData),
