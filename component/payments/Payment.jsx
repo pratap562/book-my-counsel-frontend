@@ -1,6 +1,6 @@
 import React from "react";
 // import { withRouter } from "react-router-dom"
-import style from './payment.module.css'
+import style from '../../pages/paymentPage/payment.module.css'
 const Payment = (props) => {
     // console.log(props.props);
     let { slotId } = props.props[0]

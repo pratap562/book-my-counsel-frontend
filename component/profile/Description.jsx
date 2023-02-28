@@ -1,5 +1,5 @@
 // import React from "react";
-import style from './profile.module.css'
+import style from '../../pages/advocate/profile/profile.module.css'
 
 const Description = (props) => {
   const data = props.props;

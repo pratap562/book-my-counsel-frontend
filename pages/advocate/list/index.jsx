@@ -81,7 +81,7 @@ const App = () => {
   useEffect(() => {
     const fetchAdvocates = async () => {
 
-      let url = "http://localhost:3200/lawyer?";
+      let url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/lawyer?`;
       if (selectedLocation) {
         url += `location=${selectedLocation}&`;
       }

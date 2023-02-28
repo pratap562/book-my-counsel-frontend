@@ -1,6 +1,6 @@
 import React from "react";
 import { Time } from "./Time";
-import style from './profile.module.css'
+import style from '../../pages/advocate/profile/profile.module.css'
 import Router from "next/router";
 const data = { name: "mg", add: "maghar", edu: "BA" };
 const ProfileHeader = (props) => {
