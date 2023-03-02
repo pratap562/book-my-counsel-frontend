@@ -16,6 +16,7 @@ export const Navbar = () => {
 
     useEffect(() => {
         if (document.cookie) {
+            console.log(document.cookie)
             role = document.cookie.split('=')[1].split('%20')[0]
             // name = document.cookie.split('=')[1].split('%20')[1]
             name = role.split('-')[1]
