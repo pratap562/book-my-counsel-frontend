@@ -49,7 +49,7 @@ export default function Home() {
             })
             let newRes = await ress.json()
             if (newRes.msg == 'plg login again' || newRes.msg == 'plg login') {
-                Router.push('/signupsignin')
+                Router.push('/signinsignup?#')
             } else if (newRes.msg == 'varification fail') {
                 isVerified = 'fail'
             } else if (newRes.msg == "verifyed sucessfully") {
