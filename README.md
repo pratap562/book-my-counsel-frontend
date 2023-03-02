@@ -11,7 +11,7 @@ yarn dev
 # or
 pnpm dev
 ```
-And then run the Node Backend server
+And then run the Node Backend server:
 backend repo [https://github.com/pratap562/book-my-counsel-backend]
 
 ```bash
