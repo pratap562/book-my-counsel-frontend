@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, run the Next js development server:
 
 ```bash
 npm run dev
@@ -10,6 +10,14 @@ npm run dev
 yarn dev
 # or
 pnpm dev
+```
+And then run the Node Backend server
+backend repo [https://github.com/pratap562/book-my-counsel-backend]
+
+```bash
+node server.js
+# or
+nodemon server.js
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
