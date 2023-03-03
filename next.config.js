@@ -12,7 +12,7 @@ const rewriteRules = () => {
   return [
     {
       source: "/api/:path*",
-      destination: "https://book-my-counsel-rcdr.onrender.com/:path*"
+      destination: "http://localhost:3200/:path*"
     },
   ];
 };
