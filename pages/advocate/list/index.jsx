@@ -54,7 +54,7 @@ const AdvocateList = ({ advocates }) => {
   const handleAdvocateClick = (id) => {
 
     console.log(id)
-    Router.push(`/advocate/profile/${id}`)
+    Router.push(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/advocate/profile/${id}`)
     // do something with the clicked advocate's id
     console.log(`Advocate with id ${id} was clicked`);
     // alert(id)
