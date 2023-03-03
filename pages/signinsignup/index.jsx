@@ -32,8 +32,8 @@ const googleSignin = () => {
 // }
 
 
-export default function Mainn({ isSignup, signupValue, signupPage }) {
-    console.log(process.env.GOOGLE_AUTH_SIGNUP, 'clien-browser');
+export default function Mainn({ isSignup, signupValue, signupPage, cookies }) {
+    console.log(process.env.GOOGLE_AUTH_SIGNUP, 'clien-browser', cookies, 'clookies');
 
     console.log(signupValue, 'bawal 3 se pehle');
     console.log(signupValue, 'bawal 3');
@@ -270,7 +270,8 @@ export async function getServerSideProps(context) {
                 props: {
                     isSignup: true,
                     signupPage: false,
-                    signupValue: 'dng'
+                    signupValue: 'dng',
+                    cookies: cookies
                 }
             }
         } else if (cookies.userExist == 'false') {
@@ -283,7 +284,8 @@ export async function getServerSideProps(context) {
                 props: {
                     isSignup: false,
                     signupPage: true,
-                    signupValue: 'user-dont-exist'
+                    signupValue: 'user-dont-exist',
+                    cookies: cookies
                 }
             }
 
@@ -299,7 +301,8 @@ export async function getServerSideProps(context) {
             props: {
                 isSignup: true,
                 signupPage: false,
-                signupValue: 1
+                signupValue: 1,
+                cookies: cookies
             }
         }
     } else {
@@ -307,7 +310,8 @@ export async function getServerSideProps(context) {
             props: {
                 isSignup: true,
                 signupPage: true,
-                signupValue: 0
+                signupValue: 0,
+                cookies: cookies
             }
         }
     }
