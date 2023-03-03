@@ -89,10 +89,9 @@ function Profile({ res }) {
 
 export const getServerSideProps = async ({ params }) => {
   const { advocateId } = params
-  console.log(params)
   // http://localhost:3200/lawyer/63fa089d6f6ced4ed113f289
-
-  let res = await fetch(` ${process.env.NEXT_PUBLIC_FRONTEND_URL}/${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`)
+  console.log(`${process.env.NEXT_PUBLIC_FRONTEND_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`, 'tttt')
+  let res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`)
   res = await res.json()
   // console.log(res, '')
   // console.log(res)
