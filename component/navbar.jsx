@@ -20,6 +20,7 @@ export const Navbar = () => {
             role = document.cookie.split('=')[1].split('%20')[0]
             // name = document.cookie.split('=')[1].split('%20')[1]
             name = role.split('-')[1]
+            name = name.split(';')[0]
             role = role.split('-')[0]
             console.log(role, name, 'll')
         }
@@ -27,6 +28,7 @@ export const Navbar = () => {
         if (role == 'advocate') {
             setLinks([{ text: 'All Advocate', link: '/advocate/list' }, { text: 'Dashboard', link: '/advocate/dashboard' }])
         }
+        console.log(name, 'nammmmmmmmmmmmmmmmmmmmmm')
         setName(name)
         setRole(role)
         stopLoading(false)

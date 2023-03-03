@@ -22,7 +22,7 @@ const Payment = (props) => {
         //     toast.error(msg, { theme: 'dark' })
         // }
         // console.log(data)
-        handlePayment()
+        // handlePayment()
     }
     const handlePayment = async () => {
 
