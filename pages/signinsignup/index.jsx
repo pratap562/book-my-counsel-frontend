@@ -11,12 +11,14 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const googleSignup = () => {
     console.log('google signup');
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_AUTH_SIGNUP, 'iiiii')
     console.log(process.env.NEXT_PUBLIC_GOOGLE_AUTH_SIGNUP, 'kll');
     Router.push(process.env.NEXT_PUBLIC_GOOGLE_AUTH_SIGNUP);
 }
 
 const googleSignin = () => {
     console.log('google login');
+    console.log(process.env.NEXT_PUBLIC_GOOGLE_AUTH_LOGIN, 'oooooo')
     Router.push(process.env.NEXT_PUBLIC_GOOGLE_AUTH_LOGIN);
 }
 // const handelSignin = () => {
