@@ -125,7 +125,7 @@ const getServerSideProps = async ({ req, params }) => {
     console.log(advocateId)
 
     try {
-        let data = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/${advocateId}`)
+        let data = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/${advocateId}`)
         data = await data.json()
         console.log(data)
         // console.log(data.data[1][0])
