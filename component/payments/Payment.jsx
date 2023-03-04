@@ -12,6 +12,7 @@ const Payment = (props) => {
         })
         data = await data.json()
         if (data.msg == 'slot booked sucessfull') {
+            handlePayment()
             // toast.success("slot booked sucessfully", { theme: 'dark' })
         } else if (data.err || data.msg == 'plg login' || data.msg == 'plg login again') {
             let msg = ''
@@ -23,7 +24,6 @@ const Payment = (props) => {
             toast.error(msg, { theme: 'dark' })
         }
         console.log(data)
-        handlePayment()
     }
     const handlePayment = async () => {
 
