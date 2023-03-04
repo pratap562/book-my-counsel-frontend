@@ -1,0 +1,13 @@
+.main {
+  position: fixed;
+  bottom: 20px;
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn {
+  width: 100px;
+  height: 30px;
+}
