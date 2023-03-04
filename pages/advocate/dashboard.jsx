@@ -128,6 +128,7 @@ const getServerSideProps = async (context) => {
     console.log(token)
     console.log('tokn')
     console.log(refresh_token, 'ref')
+    console.log(`${process.env.BACKEND_URL}/slotes/my/all`, 'urllllllllll')
     if (token == undefined || token == '') {
         return {
             redirect: {
@@ -138,7 +139,7 @@ const getServerSideProps = async (context) => {
     }
 
     try {
-        let data = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/slotes/my/all`, {
+        let data = await fetch(`${process.env.BACKEND_URL}/slotes/my/all`, {
             method: "GET",
             credentials: 'include',
             headers: { token, refresh_token }

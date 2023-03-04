@@ -58,9 +58,9 @@ export const Navbar = () => {
                     <div>Teams</div>
                     <div>Enterprise</div>
                     <div>Product</div> */}
-                            {links.map((el) => {
+                            {links.map((el, i) => {
                                 return (
-                                    <Link className={styles.navLink} href={`${el.link}`}>
+                                    <Link key={i} className={styles.navLink} href={`${el.link}`}>
                                         <div className={styles["nav-child"]}>{el.text}</div>
                                     </Link>
                                 )

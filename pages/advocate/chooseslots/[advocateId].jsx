@@ -118,9 +118,10 @@ const SLOT = ({ advocateId, newData }) => {
     )
 }
 
-const getServerSideProps = async ({ params }) => {
+const getServerSideProps = async ({ req, params }) => {
 
     const { advocateId } = params
+    console.log(req.query, 'queryyyyyyyy')
     console.log(advocateId)
 
     try {
