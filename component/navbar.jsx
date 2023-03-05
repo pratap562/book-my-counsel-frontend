@@ -3,6 +3,7 @@ import Image from "next/image"
 import logo from "../images/logo.jpg"
 import styles from "./navbar.module.css"
 import { useEffect, useState } from "react"
+import Router from "next/router"
 // import Style from "./navbar.css"
 
 
@@ -43,21 +44,20 @@ export const Navbar = () => {
         setLinks(([{ text: 'Book Apointment', link: '/advocate/list' }]))
         setName('login/signup')
     }
+    const openHomePage = () => {
+        Router.push('/')
+    }
     return (
         <>
             {loading ? <div>loading...</div> :
                 <div className={styles.header}>
                     <div className={styles.navbar}>
                         <div className={styles.logo}>
-                            <div>
+                            <div onClick={openHomePage}>
                                 <Image src={logo} ></Image>
                             </div>
                         </div>
                         <div className={styles.middle}>
-                            {/* <div>Individuals</div>
-                    <div>Teams</div>
-                    <div>Enterprise</div>
-                    <div>Product</div> */}
                             {links.map((el, i) => {
                                 return (
                                     <Link key={i} className={styles.navLink} href={`${el.link}`}>
@@ -65,8 +65,6 @@ export const Navbar = () => {
                                     </Link>
                                 )
                             })}
-                            {/* <div>Priceing</div>
-                    <div>Resources</div> */}
                         </div>
                         <div className={styles.search} >
                             <input className={styles.searchInput} type="text" placeholder="Search here" />
