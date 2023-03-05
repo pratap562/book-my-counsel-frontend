@@ -92,7 +92,7 @@ const Admin = () => {
     return (
         <div>
             <ToastContainer autoClose={2000} />
-            <AdminNav pending={pending} setPending={setPending} varified={varified} setVarified={setVarified} />
+            <AdminNav pending={pending} setPending={setPending} setPageNo={setPageNo} varified={varified} setVarified={setVarified} />
             {pending == 'isActive' ? <Pendingapplicants data={dataa} setDataa={setDataa} islastPage={islastPage} setlastPage={setlastPage} pageNo={pageNo} setPageNo={setPageNo} /> : <Varifiedapplicants islastPage={islastPage} setlastPage={setlastPage} pageNo={pageNo} setPageNo={setPageNo} data={dataa} />}
         </div>
 
