@@ -253,6 +253,9 @@ li {
 .document {
   color: #645bff;
 }
+.name {
+  font-size: 22px;
+}
 
 @media (max-width: 868px) {
   .nav-div {

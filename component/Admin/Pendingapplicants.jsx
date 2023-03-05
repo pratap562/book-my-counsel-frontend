@@ -28,7 +28,7 @@ const Pendingapplicants = (props) => {
             } else if (res.err) {
                 toast.error(res.err, { theme: 'dark' });
             } else if (res.msg) {
-                toast.err(res.msg, { theme: 'dark' })
+                toast.error(res.msg, { theme: 'dark' })
             }
         }
     }
@@ -51,7 +51,7 @@ const Pendingapplicants = (props) => {
             } else if (res.err) {
                 toast.error(res.err, { theme: 'dark' });
             } else if (res.msg) {
-                toast.err(res.msg, { theme: 'dark' })
+                toast.error(res.msg, { theme: 'dark' })
             }
         }
     }
