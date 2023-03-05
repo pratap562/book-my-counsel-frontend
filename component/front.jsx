@@ -18,6 +18,10 @@ export default function Front({ justLogdin }) {
         }
         justLogdin = false
     }, [])
+    useEffect(() => {
+        fetch(process.env.NEXT_PUBLIC_BACKEND_URL)
+    }, [])
+
     return (
         <div className={styles.front}>
             <span>
