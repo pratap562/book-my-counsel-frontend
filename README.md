@@ -28,5 +28,3 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Backend will run on (http://localhost:3200)
 
 there is .env.local file which contain all environment variables with ther values to run it locally
-
-You need to create a .env file with all the variables you can change the backend and fronted port and url
