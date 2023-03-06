@@ -3,6 +3,7 @@
   display: flex;
   height: 100vh;
   background-color: black;
+  margin: -10px;
   /* flex-direction: column; */
 }
 .container > div {
