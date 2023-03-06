@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+First go to next.config.js and update proxy destination to [http://localhost:3200/:path] to run it locally
+
 First, run the Next js development server:
 
 ```bash
@@ -21,9 +23,15 @@ node server.js
 nodemon server.js
 ```
 
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 Backend will run on (http://localhost:3200)
 
 there is .env.local file which contain all environment variables with ther values to run it locally
 
-You need to create a .env file with all the variables you can change the backend and fronted port and url
+
+## Deployed links
+
+Frontend Deployed link :- https://book-my-counsel-frontend.vercel.app
+
+Backend Deployed link :- https://book-my-counsel-rcdr.onrender.com
