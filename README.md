@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+First go to config 
+
 First, run the Next js development server:
 
 ```bash
@@ -20,6 +22,7 @@ node server.js
 # or
 nodemon server.js
 ```
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 Backend will run on (http://localhost:3200)
