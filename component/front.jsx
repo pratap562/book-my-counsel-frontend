@@ -5,7 +5,7 @@ import lawyer from "../images/lawyer.png"
 import { use, useEffect } from "react";
 import styles from "./front.module.css"
 import { ToastContainer, toast } from 'react-toastify';
-import { Route, Router } from "react-router-dom";
+import Router from "next/router";
 // import Style from "./navbar.css"
 
 export default function Front({ justLogdin }) {
