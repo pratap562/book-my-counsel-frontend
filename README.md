@@ -28,3 +28,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Backend will run on (http://localhost:3200)
 
 there is .env.local file which contain all environment variables with ther values to run it locally
+
+Frontend Deployed link :- https://book-my-counsel-frontend.vercel.app
+Backend Deployed link :- https://book-my-counsel-rcdr.onrender.com
