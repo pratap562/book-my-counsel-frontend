@@ -5,6 +5,7 @@ import lawyer from "../images/lawyer.png"
 import { use, useEffect } from "react";
 import styles from "./front.module.css"
 import { ToastContainer, toast } from 'react-toastify';
+import { Route, Router } from "react-router-dom";
 // import Style from "./navbar.css"
 
 export default function Front({ justLogdin }) {
@@ -22,6 +23,10 @@ export default function Front({ justLogdin }) {
         fetch(process.env.NEXT_PUBLIC_BACKEND_URL)
     }, [])
 
+    const openAuthPage = () => {
+        Router.push('/signinsignup?#')
+    }
+
     return (
         <div className={styles.front}>
             <span>
@@ -38,7 +43,7 @@ export default function Front({ justLogdin }) {
                 </div>
                 <div>
                     <input placeholder="Enter your email" />
-                    <div>Sign up</div>
+                    <div onClick={openAuthPage}>Sign up</div>
                 </div>
                 <div>
                     Create your free account. No credit card required
@@ -58,22 +63,5 @@ export let getServerSideProps = async (context) => {
     console.log(process.env.BACKEND_URL, 'hello');
     const cookies = cookie.parse(context.req.headers.cookie || '');
     console.log(cookies, 'bello');
-
-    // let data = await fetch(`${process.env.BACKEND_URL}/islogdin`)
-    // data = await data.json()
-    // console.log(data, 'dataaa');
-    // if (data.msg == 'logdin') {
-    //     return {
-    //         props: {
-    //             islogdin: true
-    //         }
-    //     }
-    // } else {
-    //     return {
-    //         props: {
-    //             islogdin: false
-    //         }
-    //     }
-    // }
 
 }

@@ -47,6 +47,9 @@ export const Navbar = () => {
     const openHomePage = () => {
         Router.push('/')
     }
+    const openAdvocateList = () => {
+        Router.push('/advocate/list')
+    }
     return (
         <>
             {loading ? <div>loading...</div> :
@@ -68,7 +71,7 @@ export const Navbar = () => {
                         </div>
                         <div className={styles.search} >
                             <input className={styles.searchInput} type="text" placeholder="Search here" />
-                            <span class="material-symbols-outlined">search</span>
+                            <span onClick={openAdvocateList} class="material-symbols-outlined">search</span>
                         </div>
                         <div className={styles.auth}>
                             <Link className={styles.signupLnk} href={'/signinsignup?#'}>
