@@ -34,6 +34,7 @@ const Admin = () => {
 
     useEffect(() => {
         const fetchAdvocate = () => {
+            setDataa([])
             let status
             if (pending == 'isActive') {
                 status = 'pending'
