@@ -100,7 +100,7 @@ export const getStaticProps = async ({ params }) => {
   // console.log(res)
   return {
     props: { res, tmp },
-    revalidate: 60
+    revalidate: 10
   }
 }
 export function getStaticPaths() {
