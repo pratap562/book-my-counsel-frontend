@@ -75,7 +75,8 @@ const dataaa = {
     }
   ]
 };
-function Profile({ res }) {
+function Profile({ res, tmp }) {
+  console.log(tmp, 'random num');
   const data = res.data[0]
   data.reviews = dataaa.reviews
   console.log(res)
@@ -87,18 +88,27 @@ function Profile({ res }) {
   )
 }
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticProps = async ({ params }) => {
   const { advocateId } = params
+  console.log('in client')
   // http://localhost:3200/lawyer/63fa089d6f6ced4ed113f289
   console.log(`${process.env.NEXT_PUBLIC_FRONTEND_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`, 'tttt')
   let res = await fetch(`${process.env.NEXT_PUBLIC_FRONTEND_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}/advocate/verify/detail/${advocateId}`)
   res = await res.json()
+  let tmp = Math.random()
   // console.log(res, '')
   // console.log(res)
   return {
-    props: { res }
+    props: { res, tmp },
+    revalidate: 60
   }
-
+}
+export function getStaticPaths() {
+  console.log('in server');
+  return {
+    fallback: 'blocking',
+    paths: []
+  }
 }
 
 export default dynamic(() => Promise.resolve(Profile), { ssr: false })

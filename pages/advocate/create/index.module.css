@@ -5,6 +5,9 @@
   width: 100vw;
   height: 250vh;
   margin-top: -80px;
+  height: auto;
+  padding-bottom: 20px;
+  padding-top: 40px;
 }
 .form {
   display: flex;
